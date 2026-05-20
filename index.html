@@ -1,843 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AXIARA - Your Axis for Digital Transformation, AI Integration, IT Strategy, and ERP Solutions">
-    <title>AXIARA | Digital Transformation Consulting</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-card-hover: #1a1a24;
-            --accent: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.3);
-            --accent-blue: #3b82f6;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.5);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-            background: var(--bg-dark);
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: 0.05em;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-cta {
-            background: var(--accent);
-            color: var(--bg-dark);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        /* Hero with animated gradient */
-        .hero {
-            position: relative;
-            padding: 180px 0 120px;
-            background: var(--bg-dark);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(139, 41, 66, 0.08) 0%, transparent 50%);
-            animation: heroGlow 15s ease-in-out infinite;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(2%, 1%) scale(1.05);
-            }
-            66% {
-                transform: translate(-1%, 2%) scale(0.98);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.75rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.03em;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent) 0%, #fb923c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .tagline {
-            font-size: 1.375rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            letter-spacing: 0.02em;
-        }
-
-        .hero .description {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent);
-            color: var(--bg-dark);
-            padding: 18px 36px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cta:hover {
-            box-shadow: 0 0 40px var(--accent-glow);
-            transform: translateY(-3px);
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        section.alt {
-            background: var(--bg-card);
-        }
-
-        .section-label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        .section-desc {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 700px;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 56px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 36px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent) 0%, #ea580c 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 24px var(--accent-glow);
-        }
-
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--bg-dark);
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .service-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .service-tag {
-            font-size: 0.75rem;
-            background: rgba(249, 115, 22, 0.1);
-            color: var(--accent);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            margin-top: 56px;
-        }
-
-        .about-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-
-        .about-content p {
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-
-        .about-credentials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 28px;
-        }
-
-        .credential-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-
-        .credential-badge:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Certs Grid */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 48px;
-        }
-
-        .cert-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            border-color: rgba(139, 41, 66, 0.5);
-            transform: translateY(-4px);
-        }
-
-        .cert-item .cert-name {
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-        }
-
-        .cert-item .cert-type {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--bg-card);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .contact .section-title {
-            color: var(--text-primary);
-        }
-
-        .contact .section-desc {
-            color: var(--text-muted);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            margin-top: 56px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .contact-item .icon {
-            width: 56px;
-            height: 56px;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-item svg {
-            width: 24px;
-            height: 24px;
-            color: var(--accent);
-        }
-
-        .contact-item .label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .contact-item .value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .contact-item a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent);
-        }
-
-        .contact-cta-block {
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 48px;
-            text-align: center;
-        }
-
-        .contact-cta-block h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .contact-cta-block p {
-            color: var(--text-muted);
-            margin-bottom: 32px;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--accent);
-            color: var(--bg-dark);
-            padding: 18px 36px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 40px var(--accent-glow);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-dark);
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero .tagline {
-                font-size: 1.125rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .certs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 140px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            section {
-                padding: 80px 0;
-            }
-            
-            .section-title {
-                font-size: 1.75rem;
-            }
-            
-            .contact-cta-block {
-                padding: 32px 24px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIARA | Digital Transformation Consulting</title>
+<style>
+:root{--bg:#050508;--bg2:#0c0c12;--card:#111118;--cardh:#18181f;--cyan:#22d3ee;--violet:#a78bfa;--text:#f4f4f5;--muted:rgba(244,244,245,0.4);--border:rgba(255,255,255,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Outfit,sans-serif;color:var(--text);line-height:1.6;background:var(--bg)}
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+nav{position:fixed;inset:0;background:rgba(5,5,8,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.logo{font-size:1.5rem;font-weight:800}
+.logo span{background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn-outline{display:inline-flex;padding:12px 28px;border:1px solid var(--cyan);border-radius:100px;color:var(--cyan);text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s}
+.btn-outline:hover{background:var(--cyan);color:var(--bg)}
+.hero{padding:200px 0 120px;background:var(--bg);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;left:-100px;width:800px;height:800px;background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);animation:float1 20s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(167,139,250,.1) 0%,transparent 70%);animation:float2 25s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,30px) scale(1.1)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,-50px) scale(1.05)}}
+.content{position:relative;z-index:1;max-width:720px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:100px;font-size:.85rem;font-weight:500;color:var(--cyan);margin-bottom:28px}
+.badge::before{content:'';width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}
+h1{font-size:4rem;font-weight:800;line-height:1.05;margin-bottom:24px;letter-spacing:-.03em}
+.gradient-text{background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{font-size:1.25rem;color:var(--muted);max-width:560px;margin-bottom:40px}
+.actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--bg);padding:18px 36px;border-radius:100px;text-decoration:none;font-weight:700;font-size:1rem;transition:all .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(34,211,238,.25)}
+section{padding:120px 0}
+.alt{background:var(--bg2)}
+label{font-size:.8rem;font-weight:600;color:var(--cyan);text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;display:block}
+h2{font-size:2.75rem;font-weight:800;margin-bottom:16px;letter-spacing:-.02em}
+p{color:var(--muted);font-size:1.125rem;max-width:640px}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:64px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:40px;transition:all .4s;position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));opacity:0;transition:opacity .3s}
+.card:hover{background:var(--cardh);border-color:rgba(255,255,255,.12);transform:translateY(-8px)}
+.card:hover::before{opacity:1}
+.icon{width:64px;height:64px;background:var(--bg);border:1px solid var(--border);border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+.icon svg{width:28px;height:28px;color:var(--cyan)}
+.card h3{font-size:1.375rem;font-weight:700;margin-bottom:14px}
+.card p{font-size:1rem;margin-bottom:24px;line-height:1.7}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{font-size:.8rem;background:var(--bg);border:1px solid var(--border);color:var(--cyan);padding:6px 14px;border-radius:100px;font-weight:500}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:64px;align-items:start}
+.about h3{font-size:1.5rem;font-weight:700;margin-bottom:20px}
+.about p{color:var(--muted);margin-bottom:16px;line-height:1.8}
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.badge-item{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:12px 20px;border-radius:100px;font-size:.875rem;font-weight:600;color:rgba(244,244,245,.6);transition:all .2s}
+.badge-item:hover{border-color:var(--cyan);color:var(--cyan)}
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.cert{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 20px;text-align:center;transition:all .3s}
+.cert:hover{border-color:var(--violet);transform:translateY(-4px)}
+.cert-name{font-weight:700;font-size:.95rem;margin-bottom:6px}
+.cert-type{font-size:.8rem;color:var(--muted)}
+.contact{background:var(--bg2);position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;top:-300px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;margin-top:56px;position:relative;z-index:1}
+.contact-info{display:flex;flex-direction:column;gap:32px}
+.contact-item{display:flex;align-items:center;gap:20px}
+.contact-item .icon-w{width:56px;height:56px;background:var(--card);border:1px solid var(--border);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-item svg{width:24px;height:24px;color:var(--cyan)}
+.contact-label{font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.contact-value{font-size:1.1rem;font-weight:600}
+.contact-value a{color:var(--text);text-decoration:none;transition:color .2s}
+.contact-value a:hover{color:var(--cyan)}
+.contact-card{background:linear-gradient(135deg,var(--card) 0%,var(--cardh) 100%);border:1px solid var(--border);border-radius:28px;padding:56px;text-align:center}
+.contact-card h3{font-size:1.75rem;font-weight:800;margin-bottom:12px}
+.contact-card p{color:var(--muted);margin-bottom:36px}
+.btn-call{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:linear-gradient(135deg,var(--cyan),var(--violet));color:var(--bg);padding:20px 40px;border-radius:100px;text-decoration:none;font-weight:700;font-size:1.125rem;transition:all .3s}
+.btn-call:hover{transform:scale(1.02);box-shadow:0 20px 50px rgba(34,211,238,.3)}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 0;text-align:center}
+footer p{color:var(--muted);font-size:.9rem}
+@media(max-width:900px){.services-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}.certs-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:600px){h1{font-size:2.75rem}h2{font-size:2rem}.actions{flex-direction:column}.btn-primary,.btn-outline{width:100%;justify-content:center}.certs-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">AXI<span>A</span>RA</div>
-            <a href="#contact" class="nav-cta">Contact Us</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <p class="tagline">Your Axis for the Next Era of Transformation</p>
-            <h1>We Help Businesses Navigate <span>Critical Turning Points</span></h1>
-            <p class="description">From digital strategy to AI integration, IT governance to ERP execution — AXIARA provides the expertise and guidance you need to transform challenges into competitive advantages.</p>
-            <a href="#contact" class="hero-cta">
-                Let's Discuss Your Transformation
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="alt" id="services">
-        <div class="container">
-            <p class="section-label">What We Do</p>
-            <h2 class="section-title">Comprehensive Consulting Services</h2>
-            <p class="section-desc">We offer end-to-end consulting services designed to help your organization thrive in the digital age.</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3>Digital Transformation</h3>
-                    <p>End-to-end digital strategy and execution. From assessing your current state to designing the roadmap, we align technology with business objectives to unlock growth and efficiency.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">Strategy</span>
-                        <span class="service-tag">Process Optimization</span>
-                        <span class="service-tag">Change Management</span>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3>AI Transformation</h3>
-                    <p>Integrate AI into your business workflows — not as a buzzword, but as a practical tool that creates real value. We assess, pilot, and scale AI initiatives with clear ROI.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">AI Strategy</span>
-                        <span class="service-tag">Workflow Automation</span>
-                        <span class="service-tag">ROI Measurement</span>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                    </div>
-                    <h3>IT Strategy</h3>
-                    <p>IT Roadmap, Governance, and Alignment. Whether you're building IT from scratch or optimizing what you have, we create strategies that support your business goals.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">IT Governance</span>
-                        <span class="service-tag">Roadmap Planning</span>
-                        <span class="service-tag">Vendor Selection</span>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                    </div>
-                    <h3>ERP Selection & Implementation</h3>
-                    <p>10+ years of SAP implementation experience across Thailand and Southeast Asia. We guide you from vendor selection to go-live, ensuring the system works for your people and your business.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">SAP</span>
-                        <span class="service-tag">Oracle</span>
-                        <span class="service-tag">Implementation</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <p class="section-label">About AXIARA</p>
-            <h2 class="section-title">Why AXIARA</h2>
-            
-            <div class="about-grid">
-                <div class="about-content">
-                    <h3>Axis + Era = The Turning Point of an Era</h3>
-                    <p>We believe every business reaches a moment where the right guidance can transform a challenge into a competitive advantage. AXIARA exists to be that guiding force at those critical turning points.</p>
-                    <p>With over 25 years of experience spanning hands-on technical consulting to C-suite advisory roles, we bring both depth and breadth to every engagement.</p>
-                    
-                    <div class="about-credentials">
-                        <span class="credential-badge">25+ Years IT Leadership</span>
-                        <span class="credential-badge">SAP Specialist</span>
-                        <span class="credential-badge">Digital Transformation</span>
-                        <span class="credential-badge">AI Integration</span>
-                    </div>
-                </div>
-                
-                <div class="about-content">
-                    <h3>About the Principal Consultant</h3>
-                    <p><strong>Narongwuth Wudhikanakorn</strong></p>
-                    <p>Former leadership roles at major organizations including Cobra International, Saijai Group, Cybertron, Thai City Electric Group, and IBM BCS / PwC Consulting.</p>
-                    
-                    <div class="about-credentials">
-                        <span class="credential-badge">Former CIO/CTO</span>
-                        <span class="credential-badge">Group IT Director</span>
-                        <span class="credential-badge">SAP Technical Consultant</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="alt" id="certifications">
-        <div class="container">
-            <p class="section-label">Credentials</p>
-            <h2 class="section-title">Certifications & Expertise</h2>
-            <p class="section-desc">Our commitment to excellence is validated by industry-recognized certifications.</p>
-            
-            <div class="certs-grid">
-                <div class="cert-item">
-                    <div class="cert-name">CompTIA CySA+</div>
-                    <div class="cert-type">Cybersecurity Analyst</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">CompTIA Security+</div>
-                    <div class="cert-type">Security Certification</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">CDPSE</div>
-                    <div class="cert-type">Data Privacy Solution Engineer</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">AWS Cloud Practitioner</div>
-                    <div class="cert-type">Amazon Web Services</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">Microsoft Azure Fundamentals</div>
-                    <div class="cert-type">Microsoft Azure</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">SAP Certified</div>
-                    <div class="cert-type">Technical Consultant</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">ITIL Foundation v2 & v3</div>
-                    <div class="cert-type">IT Service Management</div>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-name">Novell Master CNE</div>
-                    <div class="cert-type">Network Engineering</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <p class="section-label">Get In Touch</p>
-            <h2 class="section-title">Ready to Start Your Transformation?</h2>
-            <p class="section-desc">Let's have a conversation about your challenges and goals.</p>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.084 3 17.482 21 14.084 3 17.482 21 21 14.716 21 21 14.716 21 3 17.482 21 5.716 21 3 14.084 21 9.716 21 3 17.716 21 5.716 21 3 14.716 21 3 14.716 21 3 14.716 21 3 14.716z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="label">Call Us</div>
-                            <div class="value"><a href="tel:+66936515946">+66 93 651-5946</a></div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="label">Email</div>
-                            <div class="value"><a href="mailto:narongwuth@axiara.co">narongwuth@axiara.co</a></div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="label">Location</div>
-                            <div class="value">Bangkok, Thailand</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-cta-block">
-                    <h3>Let's Start the Conversation</h3>
-                    <p>Schedule a call to discuss how AXIARA can help your organization navigate its transformation journey.</p>
-                    <a href="tel:+66936515946" class="btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.084 3 17.482 21 14.084 3 17.482 21 21 14.716 21 21 14.716 21 9.716 21 3 17.482 21 5.716 21 3 14.084 21 9.716 21 3 17.716 21 5.716 21 3 14.716z" />
-                        </svg>
-                        Call +66 93 651-5946
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 AXIARA. Your Axis for the Next Era of Transformation.</p>
-        </div>
-    </footer>
-
-    <!-- Smooth Scroll Script -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+<nav>
+<a class="logo">AXI<span>A</span>RA</a>
+<a href="#contact" class="btn-outline">Contact Us</a>
+</nav>
+<section class="hero">
+<div class="container">
+<div class="content">
+<div class="badge">Transforming Businesses Since 1996</div>
+<h1>We Help Organizations Navigate <span class="gradient-text">Critical Transformation</span></h1>
+<p class="desc">From digital strategy to AI integration, IT governance to ERP execution — AXIARA provides the expertise and guidance you need to turn challenges into competitive advantages.</p>
+<div class="actions">
+<a href="#contact" class="btn-primary">Let's Talk →</a>
+<a href="#services" class="btn-outline" style="border-color:var(--border);color:var(--muted);">Our Services</a>
+</div>
+</div>
+</div>
+</section>
+<section id="services">
+<div class="container">
+<label>Services</label>
+<h2>What We Do</h2>
+<p style="margin-bottom:0">Comprehensive consulting services for the digital age.</p>
+<div class="services-grid" style="margin-top:64px">
+<div class="card">
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9.75 3m0 0a3.75 3.75 0 014.5 0v.75M9.75 3a3.75 3.75 0 000 7.5M15 10.5m-1.5 0a3 3 0 106 0m-6 0a3 3 0 106 0M3 20.25c0-4.5 4.5-7.5 9-7.5h.75m13.5 0a9 9 0 01-15.75v.75m0 0a3.75 3.75 0 010-.75m-15.75 0l.75.75m.75-.75L21 12m-15.75 0l.75.75m.75-.75L21 12M3 20.25v-5.25a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v5.25m-6-16.5a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v5.25M15 10.5m-1.5 0a3 3 0 106 0m-6 0a3 3 0 106 0M3 20.25v-5.25a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v5.25m-6-16.5a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v5.25m-6-16.5a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v5.25"/></svg></div>
+<h3>Digital Transformation</h3>
+<p>End-to-end digital strategy and execution. We align technology with business objectives to unlock growth and efficiency.</p>
+<div class="tags"><span class="tag">Strategy</span><span class="tag">Process Optimization</span><span class="tag">Change Management</span></div>
+</div>
+<div class="card">
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L18 7.5m0 0l-8.187-8.404M18 7.5V3m0 4.5h-4.5m4.5 0H21m-6.75-14.25L21 12m0 0l-3.75-3.75m-13.5 11.25h4.5M3.75 12a9 9 0 1018 0 9 9 0 01-18 0 9 9 0 01-9 9 0 019 9 0 01-9 9 0 019 9z"/></svg></div>
+<h3>AI Transformation</h3>
+<p>Integrate AI into business workflows — not a buzzword, but a practical tool with clear ROI. We assess, pilot, and scale AI initiatives.</p>
+<div class="tags"><span class="tag">AI Strategy</span><span class="tag">Workflow Automation</span><span class="tag">ROI Measurement</span></div>
+</div>
+<div class="card">
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h12a2.25 2.25 0 002.25-2.25V3.75M20.25 3.75H3.75M6 12a2.25 2.25 0 01-2.25-2.25M18 12a2.25 2.25 0 002.25 2.25m-18 0H6M18 12H4.5m6 6.75l-3 3m0 0l3-3m-3 3l3-3m-6 0l3 3m-3-3l-3 3"/></svg></div>
+<h3>IT Strategy</h3>
+<p>IT Roadmap, Governance, and Alignment. Whether building from scratch or optimizing existing systems, we create strategies that support business goals.</p>
+<div class="tags"><span class="tag">IT Governance</span><span class="tag">Roadmap Planning</span><span class="tag">Vendor Selection</span></div>
+</div>
+<div class="card">
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.621-2.512-.44-5.703-3.002-6.537m-11.596-1.474A26.5 26.5 0 013.75 12m-3.75-.75v.75m.75-.75h-3.75m0 0L21 12m-15.75 0v.75m.75 0H6a2.25 2.25 0 010-3.75M17.25 8.25l3.75-3m0 0l-3.75 3m3.75-3H15m0 0h4.5m-15-1.5a2.25 2.25 0 000 3h12a2.25 2.25 0 002.25-2.25M3 20.25v-5.25A2.25 2.25 0 015.25 15h1.5a2.25 2.25 0 012.25 2.25v5.25m-6-16.5a2.25 2.25 0 000 3.75m3.75-.75h-3.75m0 0L3 12m15.75-3.75l3.75 3.75m0 0l-3.75 3.75m3.75-3.75l-3.75 3.75"/></svg></div>
+<h3>ERP Selection & Implementation</h3>
+<p>10+ years of SAP experience across Thailand and SEA. We guide from vendor selection to go-live, ensuring systems work for people and business.</p>
+<div class="tags"><span class="tag">SAP</span><span class="tag">Oracle</span><span class="tag">Implementation</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<label>About</label>
+<h2>Why AXIARA</h2>
+<div class="about-grid">
+<div class="about">
+<h3>Axis + Era = The Turning Point of an Era</h3>
+<p>We believe every business reaches a moment where the right guidance can transform a challenge into competitive advantage. AXIARA exists to be that guiding force at critical turning points. 25+ years of experience from hands-on technical to C-suite advisory.</p>
+<div class="badges">
+<span class="badge-item">25+ Years IT Leadership</span>
+<span class="badge-item">SAP Specialist</span>
+<span class="badge-item">Digital Transformation</span>
+<span class="badge-item">AI Integration</span>
+</div>
+</div>
+<div class="about">
+<h3>Principal Consultant</h3>
+<p><strong>Narongwuth Wudhikanakorn</strong></p>
+<p>Former roles at Cobra International, Saijai Group, Cybertron, Thai City Electric Group, IBM BCS / PwC Consulting.</p>
+<div class="badges">
+<span class="badge-item">Former CIO/CTO</span>
+<span class="badge-item">Group IT Director</span>
+<span class="badge-item">SAP Technical Consultant</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="alt" id="certs">
+<div class="container">
+<label>Credentials</label>
+<h2>Certifications & Expertise</h2>
+<p>Industry-recognized certifications validating our commitment to excellence.</p>
+<div class="certs-grid">
+<div class="cert"><div class="cert-name">CompTIA CySA+</div><div class="cert-type">Cybersecurity Analyst</div></div>
+<div class="cert"><div class="cert-name">CompTIA Security+</div><div class="cert-type">Security Certification</div></div>
+<div class="cert"><div class="cert-name">CDPSE</div><div class="cert-type">Data Privacy</div></div>
+<div class="cert"><div class="cert-name">AWS Cloud Practitioner</div><div class="cert-type">Amazon Web Services</div></div>
+<div class="cert"><div class="cert-name">Azure Fundamentals</div><div class="cert-type">Microsoft Azure</div></div>
+<div class="cert"><div class="cert-name">SAP Certified</div><div class="cert-type">Technical Consultant</div></div>
+<div class="cert"><div class="cert-name">ITIL v2 & v3</div><div class="cert-type">IT Service Management</div></div>
+<div class="cert"><div class="cert-name">Novell Master CNE</div><div class="cert-type">Network Engineering</div></div>
+</div>
+</div>
+</section>
+<section class="contact" id="contact">
+<div class="container">
+<label>Contact</label>
+<h2>Let's Start a Conversation</h2>
+<p>Ready to transform? Let's discuss your challenges and goals.</p>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item">
+<div class="icon-w"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h.75c8.284 0 15-6.716 15-15v-.75m-16.5 0h.375c-8.284 0-15-6.716-15-15v-.75m0 0h.75c8.284 0 15 6.716 15 15v.75m-16.5 0h4.5m4.5 0v4.5m0-4.5l-4.5 4.5m4.5-4.5l4.5 4.5m0-7.5l-4.5 4.5m4.5-4.5l-4.5 4.5"/></svg></div>
+<div><div class="contact-label">Call Us</div><div class="contact-value"><a href="tel:+66936515946">+66 93 651-5946</a></div></div>
+</div>
+<div class="contact-item">
+<div class="icon-w"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m18 0A2.25 2.25 0 0019.5 9L3 9m18 0l-6.75 6.75m0 0L3.75 9m12 3.75V21"/></svg></div>
+<div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:narongwuth@axiara.co">narongwuth@axiara.co</a></div></div>
+</div>
+<div class="contact-item">
+<div class="icon-w"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+<div><div class="contact-label">Location</div><div class="contact-value">Bangkok, Thailand</div></div>
+</div>
+</div>
+<div class="contact-card">
+<h3>Transform Your Organization</h3>
+<p>Get in touch to discuss how AXIARA can help your business navigate critical transformation.</p>
+<a href="tel:+66936515946" class="btn-call">Call +66 93 651-5946</a>
+</div>
+</div>
+</section>
+<footer>
+<p>© 2026 AXIARA. Your Axis for the Next Era of Transformation.</p>
+</footer>
 </body>
 </html>
